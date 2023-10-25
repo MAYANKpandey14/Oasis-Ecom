@@ -8,7 +8,7 @@ export default function UserInfo(){
     const {data:session}= useSession();
     return(
         <div className="grid place-items-center h-screen">
-            <div className=" shadow-xl p-8 rounded-md border-t-4 border-blue-500 bg-white flex flex-col gap-2 my-6">
+            <div className=" shadow-xl p-8 rounded-md border-t-4 border-gray-800 bg-white flex flex-col gap-2 my-6">
                 <div>
                     Name: <span className="font-bold">{session?.user?.name}</span>
                 </div>

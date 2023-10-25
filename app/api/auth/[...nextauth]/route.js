@@ -1,4 +1,3 @@
-import UserInfo from "@/components/UserInfo";
 import { connectMongoDB } from "@/lib/mongodb";
 import User from "@/models/user";
 import NextAuth from "next-auth/next";
@@ -37,7 +36,7 @@ export const authOptions ={
     },
     secret:process.env.NEXTAUTH_SECRET,
     pages:{
-        signIn:"/"
+        signIn:"/login"
     },
 };
 

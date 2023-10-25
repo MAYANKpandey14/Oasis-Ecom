@@ -13,7 +13,7 @@ export default async function Register() {
   }
 
   return (
-    <main className="bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-blue-500 via-zinc-200 to-blue-800">
+    <main className="bg-gray-100">
       <RegisterForm/>
     </main>
   );

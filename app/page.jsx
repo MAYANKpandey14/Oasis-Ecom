@@ -1,17 +1,11 @@
 
-import LoginForm from '@/components/LoginForm';
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
-import { authOptions } from './api/auth/[...nextauth]/route';
+import Hero from "@/components/Hero";
 
-export default async function Home() {
-  const session = await getServerSession(authOptions);
-  if(session){
-    redirect("/dashboard");
-  }
+export default function Home() {
+  
   return (
-    <main className="bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-blue-500 via-zinc-200 to-blue-800">
-      <LoginForm/>
+    <main className="bg-white">
+      <Hero/>
     </main>
-  )
+  );
 }

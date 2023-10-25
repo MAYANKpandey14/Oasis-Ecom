@@ -42,12 +42,12 @@ const  handleSubmit = async (e) => {
 
   return (
     <div className="grid place-items-center h-screen ">
-      <div className="shadow-lg p-5 bg-white border-t-4 border-blue-600 rounded-lg">
+      <div className="shadow-lg p-5 bg-white border-t-4 border-gray-800 rounded-lg">
         <h1 className="text-3xl font-bold mt-2 mb-10 text-center ">
         Welcome👋
         </h1>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-3 mx-2">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 mx-2">
           <label className="flex gap-1 items-center font-semibold mx-1 select-none" htmlFor="email">
           <MdOutlineMailOutline className="m-0 p-0" size={25}/>Email
           </label>
@@ -67,7 +67,7 @@ const  handleSubmit = async (e) => {
             type="password"
             placeholder="Must have atleast 6 characters"
           />
-          <button className="bg-blue-600 text-white font-bold rounded-md cursor-pointer px-6 py-2 select-none">
+          <button className="bg-black text-white font-bold rounded-md cursor-pointer px-6 py-2 select-none">
             Login
           </button>
 
