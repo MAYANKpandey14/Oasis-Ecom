@@ -13,10 +13,10 @@ export default function Footer() {
           <ul>
             <p className="italic text-gray-800 font-bold text-3xl pb-6 select-none">Oasis</p>
             <div className="flex gap-6 pb-5">
-              <FaInstagram className="text-2xl cursor-pointer hover:text-orange-600 hover:text-[28px] ease-in-out duration-200" />
-              <FaXTwitter className="text-2xl cursor-pointer hover:text-gray-800 hover:text-[28px] ease-in-out duration-200" />
-              <FaLinkedin className="text-2xl cursor-pointer hover:text-blue-600 hover:text-[28px] ease-in-out duration-200" />
-              <FaYoutube className="text-2xl cursor-pointer hover:text-red-600 hover:text-[28px] ease-in-out duration-200" />
+              <FaInstagram className="text-2xl cursor-pointer hover:text-orange-600 hover:text-[28px] ease-in-out duration-300" />
+              <FaXTwitter className="text-2xl cursor-pointer hover:text-gray-800 hover:text-[28px] ease-in-out duration-300" />
+              <FaLinkedin className="text-2xl cursor-pointer hover:text-blue-600 hover:text-[28px] ease-in-out duration-300" />
+              <FaYoutube  className="text-2xl cursor-pointer hover:text-red-600 hover:text-[28px] ease-in-out duration-300" />
             </div>
           </ul>
         </div>
@@ -64,10 +64,10 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div className="flex flex-col justify-center items-center text-center  p-5 bg-white">
+      <div className="flex flex-col justify-center items-center text-center p-5 bg-white select-none">
         <h1 className=" text-gray-800 font-semibold">
-          © 2021-2022 All rights reserved | Build with ❤️ by{" "}
-          <span className="font-semibold cursor-pointer">Oasis </span>
+          © 2023-2024 All rights reserved | Build with ❤️ by{" "}
+          <span className="font-bold  text-lg">Oasis </span>
         </h1>
       </div>
     </>

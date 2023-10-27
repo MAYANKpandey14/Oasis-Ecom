@@ -15,7 +15,7 @@ export default function UserInfo(){
                 <div>
                     Email: <span className="font-bold">{session?.user?.email}</span>
                 </div>
-                <button onClick={()=>signOut()} className="bg-red-600 rounded-md text-white mt-4 max-w-fit py-2 px-6">Sign Out</button>
+                <button onClick={()=>signOut()} className="bg-red-600 rounded-md text-white mt-4 max-w-fit py-2 px-6 shadow-md hover:shadow-lg ease-in-out duration-500">Sign Out</button>
             </div>
         </div>
     )

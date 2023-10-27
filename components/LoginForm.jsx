@@ -67,7 +67,7 @@ const  handleSubmit = async (e) => {
             type="password"
             placeholder="Must have atleast 6 characters"
           />
-          <button className="bg-black text-white font-bold rounded-md cursor-pointer px-6 py-2 select-none">
+          <button className="bg-black text-white font-bold rounded-md cursor-pointer px-6 py-2 select-none shadow-md hover:shadow-xl ease-in-out duration-500">
             Login
           </button>
 

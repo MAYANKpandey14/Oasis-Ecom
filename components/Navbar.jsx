@@ -13,7 +13,7 @@ export default function Navbar() {
   };
 
   return (
-    <main className=" border-b-2 border-gray-200 rounded-sm">
+    <main className="border-y-2 border-gray-200 rounded-md">
       <div className="flex p-2 justify-between mx-2 items-center">
         <div className="mx-8 text-xl font-bold">
           <h1 className="italic text-3xl font-bold cursor-pointer select-none">
