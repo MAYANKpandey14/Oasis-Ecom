@@ -1,38 +1,61 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import { BsPlusSquareFill } from "react-icons/bs";
-import { IoLogIn } from "react-icons/io5";
 import { AiOutlineMenu } from "react-icons/ai";
 import { HiHome } from "react-icons/hi";
+import { useSession } from "next-auth/react";
+import { BiLogIn,BiSolidUser } from "react-icons/bi";
+import AuthContext from "@/context/AuthContext";
+
 export default function Navbar() {
+  const { data } = useSession();
   const [menuOpen, setMenuOpen] = useState(false);
   const handleNav = () => {
     setMenuOpen(!menuOpen);
   };
+
+  const {user, setUser} = useContext(AuthContext);
+
+  useEffect(() => {
+    if (data) {
+      setUser(data?.user);
+    }
+  }, [data,setUser]);
+
+  console.log(data);
 
   return (
     <main className="border-y-2 border-gray-200 rounded-md">
       <div className="flex p-2 justify-between mx-2 items-center">
         <div className="mx-8 text-xl font-bold">
           <h1 className="italic text-3xl font-bold cursor-pointer select-none">
-            <Link 
-            className=""
-            href={'/'}
-            >Oasis</Link>
+            <Link className="" href={"/"}>
+              Oasis
+            </Link>
           </h1>
         </div>
         <div className="hidden sm:flex ">
           <ul className="hidden md:flex gap-8 px-10 py-2 text-md font-semibold">
             <li className="hover:bg-gray-200 rounded-lg px-4 py-2 ease-in-out duration-300">
-              <Link
-                className="flex gap-2 items-center justify-center"
-                href={"/login"}
-              >
-                <IoLogIn size={30} />
-                Login / Register
-              </Link>
+              {!user ? (
+                <Link
+                  className="flex gap-2 items-center justify-center"
+                  href={"/login"}
+                >
+                  <BiLogIn size={30} />
+                  <span className="text-lg">Login</span>
+                </Link>
+              ) : (
+                <Link
+                  className="flex gap-2 items-center justify-center"
+                  href={"/login"}
+                >
+                  <BiSolidUser size={28} />
+                  <span>{data?.user?.name}</span>
+                </Link>
+              )}
             </li>
           </ul>
         </div>
@@ -59,7 +82,7 @@ export default function Navbar() {
               className="flex gap-2 items-center justify-center"
               href={"/login"}
             >
-              <IoLogIn size={30} />
+              <BiLogIn size={28} />
               Login
             </Link>
           </li>

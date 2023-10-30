@@ -24,7 +24,7 @@ export default function Hero() {
               >
                 <button
                   type="button"
-                  class="mt-1.5 inline-block font-bold bg-black px-6 py-3 text-md tracking-wide text-white rounded-md shadow-md hover:shadow-xl ease-in-out duration-500"
+                  className="mt-1.5 inline-block font-bold bg-black px-6 py-3 text-md tracking-wide text-white rounded-md shadow-md hover:shadow-xl ease-in-out duration-500"
                 >
                   Explore Shop Collection
                 </button>
