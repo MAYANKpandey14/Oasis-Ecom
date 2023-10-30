@@ -2,7 +2,10 @@ This is an Ecommerce appplication with blockchain and Razorpay payment processin
 
 ## Getting Started
 
-First, run the development server:
+First, install all the dependencies
+``` npm install ```
+
+Then run the development server:
 
 ```bash
 npm run dev
