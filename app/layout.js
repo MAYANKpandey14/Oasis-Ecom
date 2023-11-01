@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
           <NextTopLoader
             color="#000000"
             height={4}
-            showSpinner={true}
+            showSpinner={false}
             easing="ease"
           />
           {children}

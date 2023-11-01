@@ -3,10 +3,10 @@
 import Link from "next/link";
 import { useState, useEffect, useContext } from "react";
 import { BsPlusSquareFill } from "react-icons/bs";
-import { AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineShoppingCart, AiOutlineMenu } from "react-icons/ai";
 import { HiHome } from "react-icons/hi";
 import { useSession } from "next-auth/react";
-import { BiLogIn,BiSolidUser } from "react-icons/bi";
+import { BiLogIn, BiSolidUser } from "react-icons/bi";
 import AuthContext from "@/context/AuthContext";
 
 export default function Navbar() {
@@ -16,13 +16,13 @@ export default function Navbar() {
     setMenuOpen(!menuOpen);
   };
 
-  const {user, setUser} = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
 
   useEffect(() => {
     if (data) {
       setUser(data?.user);
     }
-  }, [data,setUser]);
+  }, [data, setUser]);
 
   console.log(data);
 
@@ -38,6 +38,15 @@ export default function Navbar() {
         </div>
         <div className="hidden sm:flex ">
           <ul className="hidden md:flex gap-8 px-10 py-2 text-md font-semibold">
+            <li className=" flex hover:bg-gray-200 rounded-md px-4 py-2 ease-in-out duration-300">
+              <Link
+                className="flex gap-2 items-center justify-center"
+                href={"/cart"}
+              >
+                <AiOutlineShoppingCart size={30} />
+                <span className="text-lg">Cart</span>
+              </Link>
+            </li>
             <li className="hover:bg-gray-200 rounded-lg px-4 py-2 ease-in-out duration-300">
               {!user ? (
                 <Link
@@ -52,8 +61,8 @@ export default function Navbar() {
                   className="flex gap-2 items-center justify-center"
                   href={"/login"}
                 >
-                  <BiSolidUser size={28} />
-                  <span>{data?.user?.name}</span>
+                  <BiSolidUser size={26} />
+                  <span className="text-lg">{data?.user?.name}</span>
                 </Link>
               )}
             </li>
