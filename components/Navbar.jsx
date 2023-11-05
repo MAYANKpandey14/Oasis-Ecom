@@ -1,5 +1,5 @@
 "use client";
-
+import React from "react";
 import Link from "next/link";
 import { useState, useEffect, useContext } from "react";
 import { BsPlusSquareFill } from "react-icons/bs";
@@ -36,7 +36,7 @@ export default function Navbar() {
             </Link>
           </h1>
         </div>
-        <div className="hidden sm:flex ">
+        <div className="hidden sm:flex">
           <ul className="hidden md:flex gap-8 px-10 py-2 text-md font-semibold">
             <li className=" flex hover:bg-gray-200 rounded-md px-4 py-2 ease-in-out duration-300">
               <Link
@@ -75,35 +75,36 @@ export default function Navbar() {
       <div
         className={
           menuOpen
-            ? "fixed left-0 top-0 w-[65%] sm:hidden h-screen bg-white p-10 ease-in duration-500 border-r-2 border-gray-200 shadow-xl"
-            : "fixed left-[-100%] top-0 p-10 ease-in duration-500 border-r-2 border-gray-200 shadow-xl"
+            ? "fixed left-0 top-0 w-[65%] sm:hidden h-screen bg-white p-10 ease-in-out duration-700 border-r-2 border-gray-200 shadow-xl"
+            : "fixed left-[-100%] top-0 p-10  border-r-2 border-gray-200 shadow-xl"
         }
       >
         <ul className="grid place-items-start gap-4 list-none font-semibold text-md">
-          <li className="">
+          <li className="hover:bg-gray-200 rounded-lg px-4 py-2 ease-in-out duration-300">
             <Link className="flex gap-2 items-center justify-center" href={"/"}>
-              <HiHome size={25} />
-              Home
+              <HiHome size={28} />
+              <span className="text-lg">Home</span>
             </Link>
           </li>
-          <li>
-            <Link
-              className="flex gap-2 items-center justify-center"
-              href={"/login"}
-            >
-              <BiLogIn size={28} />
-              Login
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="flex gap-2 items-center justify-center"
-              href={"/register"}
-            >
-              <BsPlusSquareFill size={20} />
-              Register
-            </Link>
-          </li>
+          <li className="hover:bg-gray-200 rounded-lg px-4 py-2 ease-in-out duration-300">
+              {!user ? (
+                <Link
+                  className="flex gap-2 items-center justify-center"
+                  href={"/login"}
+                >
+                  <BiLogIn size={30} />
+                  <span className="text-lg">Login</span>
+                </Link>
+              ) : (
+                <Link
+                  className="flex gap-2 items-center justify-center"
+                  href={"/login"}
+                >
+                  <BiSolidUser size={26} />
+                  <span className="text-lg">{data?.user?.name}</span>
+                </Link>
+              )}
+            </li>
         </ul>
       </div>
     </main>

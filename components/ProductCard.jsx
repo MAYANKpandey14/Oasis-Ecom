@@ -122,9 +122,11 @@
 
 import React from "react";
 import Image from "next/image";
-import { AiOutlineShoppingCart } from "react-icons/ai";
-
+import { AiOutlineShoppingCart,AiOutlineCheckCircle } from "react-icons/ai";
+import {useState} from 'react';
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+
+
 
 
 function generateRating(rating) {
@@ -185,26 +187,46 @@ function generateRating(rating) {
 }
 
 function ProductCard({ img, title, desc, rating, price }) {
+  
+  const [itemAdded,setItemAdded]=useState(false);
+  
+const handleBtnAddToCart =()=>{
+  setItemAdded(false);
+  console.log("Product Added to Cart");
+  setItemAdded(true);
+  setInterval(()=>{
+    if(setItemAdded){
+      setItemAdded(false);
+    }
+  },10000);
+  
+  
+}
+  
   return (
-    <div className="px-4 border border-gray-200 rounded-xl max-w-[400px] cursor-pointer shadow-md hover:shadow-lg ease-in-out duration-500">
+    <div className=" flex flex-col px-6 border border-gray-200 rounded-xl max-w-[400px] cursor-pointer shadow-md hover:shadow-lg ease-in-out duration-500">
       <div>
         <Image src={img} width={250} height={300} alt={title} />
       </div>
-      <div className="space-y-2 py-2">
-        <h2 className="text-accent font-medium uppercase">{title}</h2>
-        <p className="text-gray-500 max-w-[150px]">{desc}</p>
+      <div className="space-y-2 py-6 ">
+        <h2 className="text-accent font-bold uppercase">{title}</h2>
+        <p className="text-gray-500 max-w-[150px] text-sm">{desc}</p>
         <div>{generateRating(rating)}</div>
-        <div className="font-bold flex gap-4">
+        <div className="font-bold flex gap-2">
           Rs.{price}
           <del className="text-gray-500 font-normal">
             Rs.{parseInt(price) + 2000}.00
           </del>
         </div>
         <div className="">
-          <button className="flex gap-2 items-center justify-center font-semibold bg-black text-white w-fit px-4 py-1.5 rounded-md">
+         {!itemAdded?( <button  onClick={handleBtnAddToCart} className="flex gap-2 items-center justify-center font-semibold border-2 border-black bg-black text-white w-fit px-4 py-1.5 rounded-md  focus:bg-white focus:border-2 focus:border-black focus:rounded-md focus:text-black duration-500 ease-in-out">
             <AiOutlineShoppingCart size={24} />
             Add to Cart
           </button>
+          ):(<button  onClick={handleBtnAddToCart} className="flex gap-2 items-center justify-center font-semibold border-2 border-black bg-black text-white w-fit px-4 py-1.5 rounded-md  focus:bg-white focus:border-2 focus:border-black focus:rounded-md focus:text-black duration-500 ease-in-out">
+          <AiOutlineCheckCircle size={24} />
+          Added to Cart
+        </button>)}
         </div>
       </div>
     </div>
