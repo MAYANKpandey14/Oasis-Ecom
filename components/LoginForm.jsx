@@ -82,6 +82,7 @@ const  handleSubmit = async (e) => {
               <span className="font-semibold underline">Register</span>
             </Link>
             <Link href={"/forgot"} className="mt-4 underline text-red-500">Forgot Password</Link>
+            {/* This is a link to forgot page */}
           </div>
         </form>
       </div>
