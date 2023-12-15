@@ -76,11 +76,12 @@ const  handleSubmit = async (e) => {
               {error}
             </div>
           )}
-          <div>
+          <div className="flex flex-col">
             <Link href={"/register"} className="text-sm mt-4">
               Don&rsquo;t have an account?{" "}
               <span className="font-semibold underline">Register</span>
             </Link>
+            <Link href={"/forgot"} className="mt-4 underline text-red-500">Forgot Password</Link>
           </div>
         </form>
       </div>
