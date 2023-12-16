@@ -208,7 +208,7 @@ const handleBtnAddToCart =()=>{
       <div>
         <Image src={img} width={250} height={300} alt={title} />
       </div>
-      <div className="space-y-2 py-6 ">
+      <div className="space-y-2 py-6 grid place-items-center">
         <h2 className="text-accent font-bold uppercase">{title}</h2>
         <p className="text-gray-500 max-w-[150px] text-sm">{desc}</p>
         <div>{generateRating(rating)}</div>
@@ -218,14 +218,14 @@ const handleBtnAddToCart =()=>{
             Rs.{parseInt(price) + 2000}.00
           </del>
         </div>
-        <div className="">
-         {!itemAdded?( <button  onClick={handleBtnAddToCart} className="flex gap-2 items-center justify-center font-semibold border-2 border-black bg-black text-white w-fit px-4 py-1.5 rounded-md  focus:bg-white focus:border-2 focus:border-black focus:rounded-md focus:text-black duration-500 ease-in-out">
+        <div className="grid  place-items-center">
+         {!itemAdded?( <button  onClick={handleBtnAddToCart} className="flex gap-2 items-center justify-center font-semibold border-2 border-black bg-black text-white  px-4 py-1.5 rounded-md  focus:bg-white focus:border-2 focus:border-black focus:rounded-md focus:text-black duration-500 ease-in-out">
             <AiOutlineShoppingCart size={24} />
             Add to Cart
           </button>
-          ):(<button  onClick={handleBtnAddToCart} className="flex gap-2 items-center justify-center font-semibold border-2 border-black bg-black text-white w-fit px-4 py-1.5 rounded-md  focus:bg-white focus:border-2 focus:border-black focus:rounded-md focus:text-black duration-500 ease-in-out">
+          ):(<button  onClick={handleBtnAddToCart} className="flex gap-2 items-center justify-center font-semibold border-2 border-black bg-black text-white  px-4 py-1.5 rounded-md  focus:bg-white focus:border-2 focus:border-black focus:rounded-md focus:text-black duration-500 ease-in-out">
           <AiOutlineCheckCircle size={24} />
-          Added to Cart
+          Added to Cart 
         </button>)}
         </div>
       </div>
