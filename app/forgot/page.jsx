@@ -1,9 +1,9 @@
-import Forgotform from "@/components/Forgotform";
+import ForgotPage from "@/components/ForgotPage";
 
-export default function forgot() {
+export default function Forgot() {
   return (
-    <main className="grid place-items-center">
-      <Forgotform />
+    <main>
+      <ForgotPage />
     </main>
   );
 }
