@@ -4,52 +4,57 @@ import Link from "next/link";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { MdOutlineMailOutline , MdPassword } from "react-icons/md";
+import { MdOutlineMailOutline, MdPassword } from "react-icons/md";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");  
+  const [error, setError] = useState("");
 
-const router = useRouter();
+  const router = useRouter();
 
-const  handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!email || !password) {
       setError("");
       setError("All fields are necessary.");
       return;
     }
-    
+
     try {
-        const res= await signIn("credentials",{
-            email,password,redirect:false,
-        });
+      const res = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
 
-        if(res.error){
-            setError("");
-            setError("Invalid Credentials.");
-            return;
-        }
+      if (res.error) {
+        setError("");
+        setError("Invalid Credentials.");
+        return;
+      }
 
-        router.replace("dashboard");
+      router.replace("dashboard");
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
-
   };
 
   return (
     <div className="grid place-items-center h-screen ">
       <div className="shadow-lg p-5 bg-white border-t-4 border-gray-800 rounded-lg">
         <h1 className="text-3xl font-bold mt-2 mb-10 text-center ">
-        Welcome👋
+          Welcome👋
         </h1>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 mx-2">
-          <label className="flex gap-1 items-center font-semibold mx-1 select-none" htmlFor="email">
-          <MdOutlineMailOutline className="m-0 p-0" size={25}/>Email
+          <label
+            className="flex gap-1 items-center font-semibold mx-1 select-none"
+            htmlFor="email"
+          >
+            <MdOutlineMailOutline className="m-0 p-0" size={25} />
+            Email
           </label>
           <input
             onChange={(e) => setEmail(e.target.value)}
@@ -58,8 +63,12 @@ const  handleSubmit = async (e) => {
             placeholder="example@mail.com"
           />
 
-          <label className=" flex items-center gap-1 font-semibold mx-1 select-none" htmlFor="password">
-            <MdPassword className="m-0 p-0" size={25}/>Password
+          <label
+            className=" flex items-center gap-1 font-semibold mx-1 select-none"
+            htmlFor="password"
+          >
+            <MdPassword className="m-0 p-0" size={25} />
+            Password
           </label>
           <input
             onChange={(e) => setPassword(e.target.value)}
@@ -81,12 +90,13 @@ const  handleSubmit = async (e) => {
               Don&rsquo;t have an account?{" "}
               <span className="font-semibold underline">Register</span>
             </Link>
-<<<<<<< HEAD
-            <Link href={"/forgot"} className="text-sm mt-4">Forgot Password</Link>
-=======
             {/* //forgot password  link*/}
-            <Link className="flex flex-col text-sm underline text-red-500 font-semibold" href={"/forgot"}>Forgot Password</Link>
->>>>>>> 23f3bdc638d39c369975eb6775d1f9cd56a962be
+            <Link
+              className="flex flex-col text-sm underline text-red-500 font-semibold"
+              href={"/forgot"}
+            >
+              Forgot Password
+            </Link>
           </div>
         </form>
       </div>
