@@ -76,12 +76,17 @@ const  handleSubmit = async (e) => {
               {error}
             </div>
           )}
-          <div>
+          <div className="flex flex-col">
             <Link href={"/register"} className="text-sm mt-4">
               Don&rsquo;t have an account?{" "}
               <span className="font-semibold underline">Register</span>
             </Link>
+<<<<<<< HEAD
             <Link href={"/forgot"} className="text-sm mt-4">Forgot Password</Link>
+=======
+            {/* //forgot password  link*/}
+            <Link className="flex flex-col text-sm underline text-red-500 font-semibold" href={"/forgot"}>Forgot Password</Link>
+>>>>>>> 23f3bdc638d39c369975eb6775d1f9cd56a962be
           </div>
         </form>
       </div>
