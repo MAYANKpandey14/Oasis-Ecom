@@ -81,14 +81,8 @@ const  handleSubmit = async (e) => {
               Don&rsquo;t have an account?{" "}
               <span className="font-semibold underline">Register</span>
             </Link>
-<<<<<<< HEAD
-
             {/* //forgot password  link*/}
             <Link className="flex flex-col text-sm underline text-red-500 font-semibold" href={"/forgot"}>Forgot Password</Link>
-=======
-            <Link href={"/forgot"} className="mt-4 underline text-red-500">Forgot Password</Link>
-            {/* This is a link to forgot page */}
->>>>>>> 73ae0635e9e7aad35201a4990b833c1dd2cc7ac7
           </div>
         </form>
       </div>
