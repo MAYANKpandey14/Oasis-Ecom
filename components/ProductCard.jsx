@@ -116,18 +116,22 @@
 
 // export default ProductCard;
 
+
+
+
+
+
+
+
 // jsx version 1, by Mayank Pandey
 
-"use client";
+'use client'
 
-import React from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
-import { AiOutlineShoppingCart,AiOutlineCheckCircle } from "react-icons/ai";
-import {useState} from 'react';
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-
-
-
+import Notification from "./Commoncart/Notification";
+import { cartContext } from "@/lib/cartContext";
 
 function generateRating(rating) {
   switch (rating) {
@@ -186,51 +190,81 @@ function generateRating(rating) {
   }
 }
 
-function ProductCard({ img, title, desc, rating, price }) {
-  
-  const [itemAdded,setItemAdded]=useState(false);
-  
-const handleBtnAddToCart =()=>{
-  setItemAdded(false);
-  console.log("Product Added to Cart");
-  setItemAdded(true);
-  setInterval(()=>{
-    if(setItemAdded){
-      setItemAdded(false);
-    }
-  },10000);
-  
-  
-}
-  
-  return (
-    <div className=" flex flex-col px-6 border border-gray-200 rounded-xl max-w-[400px] cursor-pointer shadow-md hover:shadow-lg ease-in-out duration-500">
-      <div>
+// async function handleAddToCart(getCartItem){
+//   const res = await addToCart({productID : getCartItem._id,userID:userAgent._id})
+//   console.log(res);
+// }
+
+
+function ProductCard({ id, img, title, desc, rating, price, setNotification }) {
+  const [cartData, updateCart] = useContext(cartContext);
+  const [loading, setLoading] = useState(false);
+
+  const handleAddToCart = async () => {
+    setLoading(true);  
+    // Simulating an asynchronous action (e.g., API call)
+    // Replace this with your actual addToCart logic
+    setTimeout(() => {
+      setLoading(false);
+      let have = false;
+      cartData.map(item => {
+        if (item.id === id){
+          item.quantity += 1;
+          have = true;
+        }
+      })
+      if (!have)
+      {
+        let product = {
+          id: id,
+          productID: {
+            imageUrl: img,
+            name: title,
+            price: price
+          },
+          quantity: 1
+        };
+        updateCart((prev) => [...prev, product]);
+      } else
+        updateCart([...cartData]);
+      setNotification(true); // Display the notification after successful addition
+    }, 1500); // Simulating a delay of 1.5 seconds
+  };
+return (
+  <>
+    <div className="px-4 border border-gray-200 rounded-xl max-w-[400px] cursor-pointer shadow-md hover:shadow-lg 
+    ease-in-out duration-500">
+       <div>
         <Image src={img} width={250} height={300} alt={title} />
       </div>
-      <div className="space-y-2 py-6 grid place-items-center">
-        <h2 className="text-accent font-bold uppercase">{title}</h2>
-        <p className="text-gray-500 max-w-[150px] text-sm">{desc}</p>
+      <div className="space-y-2 py-2">
+        <h2 className="text-accent font-medium uppercase">{title}</h2>
+        <p className="text-gray-500 max-w-[150px]">{desc}</p>
         <div>{generateRating(rating)}</div>
-        <div className="font-bold flex gap-2">
+        <div className="font-bold flex gap-4">
           Rs.{price}
           <del className="text-gray-500 font-normal">
             Rs.{parseInt(price) + 2000}.00
           </del>
         </div>
-        <div className="grid  place-items-center">
-         {!itemAdded?( <button  onClick={handleBtnAddToCart} className="flex gap-2 items-center justify-center font-semibold border-2 border-black bg-black text-white  px-4 py-1.5 rounded-md  focus:bg-white focus:border-2 focus:border-black focus:rounded-md focus:text-black duration-500 ease-in-out">
-            <AiOutlineShoppingCart size={24} />
-            Add to Cart
-          </button>
-          ):(<button  onClick={handleBtnAddToCart} className="flex gap-2 items-center justify-center font-semibold border-2 border-black bg-black text-white  px-4 py-1.5 rounded-md  focus:bg-white focus:border-2 focus:border-black focus:rounded-md focus:text-black duration-500 ease-in-out">
-          <AiOutlineCheckCircle size={24} />
-          Added to Cart 
-        </button>)}
         </div>
-      </div>
-    </div>
-  );
-}
 
+        <div>
+        <button
+          className="mt-1.5 flex w-full justify-center bg-black px-5 py-3 text-xs font-medium uppercase 
+          tracking-wide text-white relative"
+          onClick={handleAddToCart}
+          disabled={loading} // Disable the button when loading
+        >
+          {loading && ( // Show loader when loading is true
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-6 h-6 border-2 border-black rounded-full animate-ping" />
+            </div>
+          )}
+          {loading ? 'Adding ....' : 'Add To Cart'}
+        </button>
+      </div>
+    </div></>
+  );
+  }
 export default ProductCard;

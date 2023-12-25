@@ -1,4 +1,5 @@
 import mongoose, { Schema, models } from "mongoose";
+import { HiSortAscending } from "react-icons/hi";
 
 const userSchema= new Schema({
     name:{
@@ -13,8 +14,16 @@ const userSchema= new Schema({
         type:String,
         required:true,
     },
-}, 
-{timestamps:true}
+    resetToken:{
+    type:String,
+    required:false,
+    },
+    resetTokenExpiry:{
+        type:Date,
+        required:false,
+    },
+},    
+    {timestamps:true}
 );
 
 
